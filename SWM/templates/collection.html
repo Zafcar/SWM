@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title> Add Collection Sites</title>
+    <link rel="stylesheet" href="{% static 'CSS/map.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+  </head>
+
+  <body>
+
+    <!-- <hr>
+
+      <input type="text" id="n1" value="">
+      <span> + </span>
+      <input type="text" id="n2" value="">
+      <span> = </span>
+      <div id="result"> _____ </div>
+      <button type="button" id="button-ah">Add Numbers</button>
+    </div>
+    <hr> -->
+
+    <div class="abc" id = content>
+        <form action="/collection/" method = "POST">
+            {% csrf_token %}
+            <label for = "">Name: </label>
+            <input type = "text" id = "user" name = "user" required><br>
+
+            <label for = "">Phone number: </label>
+            <input type = "text" id = "phone" name = "phone"  required><br>
+
+            <label for = "">Latitude: </label>
+            <input type = "text" id = "lat" name = "lat"  required><br>
+
+            <label for = "">Longitude: </label>
+            <input type = "text" id = "lon" name = "lon"  required><br>
+
+            <label for = "">Which day it starts: </label>
+            <input type = "date" id = "end_date" name = "end_date" required><br>
+            
+            
+            <label for = "">Which day it ends: </label>
+            <input type = "date" id = "start_date" name = "start_date" required><br>
+            
+            
+            <label for = "">Which time it starts: </label>
+            <input type = "time" id = "start_time" name = "start_time" required><br>
+            
+            <label for = "">Which time it ends: </label>
+            <input type = "time" id = "end_time" name = "end_time" required><br>
+
+            <label for = "">Type of Waste: </label>
+            <select id = "type" name = "type">
+              <option value = "GW">Glass Waste</option>
+              <option value = "CW">Cloth Waste</option>
+              <option value = "EW">Electronic Waste</option>
+            </select><br>
+            <button type = "submit" id = "submit">Submit</button>
+        </form>
+    </div>
+
+    
+
+    <div id="map"></div>
+      <script type="text/javascript" src="{% static 'javascript/map.js' %}"> </script>
+
+
+  </body>
+
+</html>

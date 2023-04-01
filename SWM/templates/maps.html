@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Map Routing</title>
+    <link rel="stylesheet" href="{% static 'CSS/map.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+  </head>
+
+  <body>
+
+    <table style="border-style: solid;">
+      <tr>
+        <th>Set points</th>
+        <th>Path points</th>
+      </tr>>
+
+      <tr>
+        <td>
+            <div class="abc" id = content>
+                <form action="/maps/" method = "POST">
+                    {% csrf_token %}
+
+                    <label for = "">Latitude: </label>
+                    <input type = "text" id = "lat" name = "lat" required><br>
+
+                    <label for = "">Longitude: </label>
+                    <input type = "text" id = "lon" name = "lon" required><br>
+
+                    <label for = "">Estimated Time: </label>
+                    <input type = "time" id = "time" name = "time" required><br>
+
+                    <button type = "submit" id = "submit">Submit</button>
+                </form>
+            </div>
+
+            
+
+            <div id="map" style="height: 800px; width: 900px; border-style: solid;"></div>
+            <script type="text/javascript" src="{% static 'javascript/map.js' %}"> </script>
+
+        </td>
+
+        <td>
+          <div id="map" style="height: 800px; width: 900px; border-style: solid;">
+          {% block content %}
+        
+          {{ maps|safe }}
+        
+          {% endblock %}</div>
+        </td>
+        
+            
+      </tr>
+        
+    </table> 
+
+  </body>
+
+</html>
+
+
+
+
+
+
